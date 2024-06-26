@@ -1,13 +1,19 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { checkValidData } from '../utils/validate'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
 
@@ -29,7 +35,23 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
-                    console.log(user);
+                    updateProfile(user, {
+                        displayName: name.current.value,
+                        photoURL: "https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp"
+                    }).then(() => {
+                        const { uid, email, displayName, photoURL } = auth.currentUser;
+                        dispatch(
+                            addUser({
+                                uid: uid, email: email,
+                                displayName: displayName,
+                                photoURL: photoURL
+                            })
+                        );
+                        navigate("/browse")
+                    }).catch((error) => {
+                        setErrorMessage(error.message)
+                    });
+
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -44,11 +66,10 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log(user)
+                    navigate("/browse")
                 })
                 .catch((error) => {
                     const errorCode = error.code;
-                    console.log(errorCode)
                     const errorMessage = error.message;
                     setErrorMessage(errorCode + " " + errorMessage)
                 });
@@ -71,7 +92,7 @@ const Login = () => {
                     <div className='flex flex-col justify-center'>
                         <h2 className='font-bold text-3xl py-4'>{isSignInForm ? 'Sign In' : 'Sign Up'}</h2>
                         {!isSignInForm && (
-                            <input type='text' placeholder='Full Name' className='p-2 my-2 w-full bg-transparent border rounded border-gray-400' />
+                            <input ref={name} type='text' placeholder='Full Name' className='p-2 my-2 w-full bg-transparent border rounded border-gray-400' />
                         )}
 
                         <input ref={email} type='text' placeholder='Email Address' className='p-2 my-2 w-full bg-transparent border rounded border-gray-400' />
