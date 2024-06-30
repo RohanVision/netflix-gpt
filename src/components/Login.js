@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { USER_AVATAR } from '../utils/constants';
+import { BACK_IMG_URL, USER_AVATAR } from '../utils/constants';
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
@@ -82,7 +82,7 @@ const Login = () => {
         <div>
             <Header />
             <div className='absolute'>
-                <img src='https://assets.nflxext.com/ffe/siteui/vlv3/a56dc29b-a0ec-4f6f-85fb-50df0680f80f/ed3169bc-bae8-4c49-80ed-bab82d071166/CA-en-20240617-popsignuptwoweeks-perspective_alpha_website_medium.jpg' alt='background' />
+                <img src={BACK_IMG_URL} alt='background' />
             </div>
 
             <div className='absolute w-1/3 top-1/3 left-1/3 bg-black p-8 text-white bg-opacity-80 rounded'>
