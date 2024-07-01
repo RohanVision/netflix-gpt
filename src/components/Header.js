@@ -12,6 +12,7 @@ import { changeLanguage } from '../utils/configSlice';
 const Header = () => {
     const navigate = useNavigate();
     const user = useSelector(store => store.user);
+    const showGptSearch = useSelector((store) => store.gpt.showGptSerach)
     const dispatch = useDispatch();
 
     const handleSignOut = () => {
@@ -55,12 +56,18 @@ const Header = () => {
 
             {user && <div>
                 <div className='flex items-center'>
-                    <div className='p-4'>
-                        <select onChange={handleLanguageChange} className='p-2 outline-none bg-yellow-400 text-black font-bold rounded'>
-                            {SUPPORTED_LANG.map((lang) => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
-                        </select>
+                    <div className='px-4'>
+                        {showGptSearch && (
+                            <select onChange={handleLanguageChange} className='px-4 py-1 outline-none bg-yellow-400 text-black font-bold rounded cursor-pointer'>
+                                {SUPPORTED_LANG.map((lang) => (
+                                    <option key={lang.identifier} value={lang.identifier}>
+                                        {lang.name}
+                                    </option>
+                                ))}
+                            </select>
+                        )}
                     </div>
-                    <button onClick={handleGptSearchClick} className='py-2 px-6 mr-4 bg-purple-700 text-white rounded'>GPT Search</button>
+                    <button onClick={handleGptSearchClick} className='py-2 px-6 mr-4 bg-purple-700 text-white rounded'>{showGptSearch ? "Homepage" : "GPT Search"}</button>
                     <img className='w-10 rounded-lg' src={user?.photoURL} alt='usericon' />
                     <button onClick={handleSignOut} className='px-2 text-white font-bold'>(Sign Out)</button>
                 </div>

@@ -2,9 +2,9 @@ import React from 'react'
 
 const VideoTitle = ({ title, overview }) => {
     return (
-        <div className='pt-36 px-12 w-full aspect-video absolute pt-[20%] text-white bg-gradient-to-r from-black'>
-            <h1 className='text-6xl font-bold'>{title}</h1>
-            <p className='text-lg py-6 w-1/3'>{overview}</p>
+        <div className='px-12 w-full aspect-video absolute pt-[10%] text-white bg-gradient-to-r from-black'>
+            <h1 className='text-4xl font-bold'>{title}</h1>
+            <p className='text-md py-6 w-1/3'>{overview}</p>
             <div className='flex'>
                 <button className='flex justify-evenly align-bottom bg-white text-xl rounded py-3 px-10 m-2 text-black font-bold hover:bg-opacity-80'><span className='pr-2 pt-1'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
