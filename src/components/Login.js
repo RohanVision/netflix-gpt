@@ -81,12 +81,12 @@ const Login = () => {
     return (
         <div>
             <Header />
-            <div className='absolute'>
-                <img src={BACK_IMG_URL} alt='background' />
+            <div className='absolute w-full'>
+                <img className='w-full h-screen object-cover' src={BACK_IMG_URL} alt='background' />
             </div>
 
-            <div className='absolute w-1/3 top-1/3 left-1/3 bg-black p-8 text-white bg-opacity-80 rounded'>
-                <form onSubmit={(e) => { e.preventDefault() }}>
+            <div className='flex justify-center'>
+                <form className='absolute w-full md:w-3/12 top-1/3 bg-black p-8 text-white bg-opacity-80 rounded' onSubmit={(e) => { e.preventDefault() }}>
                     <div className='flex flex-col justify-center'>
                         <h2 className='font-bold text-3xl py-4'>{isSignInForm ? 'Sign In' : 'Sign Up'}</h2>
                         {!isSignInForm && (
