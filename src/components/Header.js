@@ -2,7 +2,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import React from 'react';
 import { useEffect } from 'react';
 import { auth } from '../utils/firebase';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { LOGO, SUPPORTED_LANG } from '../utils/constants';
