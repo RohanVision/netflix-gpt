@@ -9,16 +9,19 @@ const GptMovieSuggestion = () => {
     if (!movieNames) return null;
 
     return (
-        <div className='p-4 m-4 bg-black text-white bg-opacity-90 rounded'>
-            <div>
-                {movieNames.map((movieNames, index) => (
+        <div className="p-6 m-4 bg-black bg-opacity-90 text-white rounded-lg shadow-lg">
+            <div className="space-y-6">
+                {movieNames.map((movieName, index) => (
                     <MovieList
-                        key={movieNames}
-                        title={movieNames}
-                        movies={movieResults[index]} />
+                        className="hover:shadow-xl transition-shadow duration-300"
+                        key={movieName}
+                        title={movieName}
+                        movies={movieResults[index]}
+                    />
                 ))}
             </div>
         </div>
+
     )
 }
 
