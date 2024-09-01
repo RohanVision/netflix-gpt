@@ -2,22 +2,22 @@ import React from 'react'
 
 const VideoTitle = ({ title, overview }) => {
     return (
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black to-transparent md:px-12 px-6 text-white flex flex-col justify-center items-start">
-            <h1 className="text-3xl md:text-5xl font-extrabold drop-shadow-lg pl-2 md:pl-0 mb-4">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black to-transparent md:px-12 px-4 py-6 text-white flex flex-col justify-center items-start">
+            <h1 className="text-md sm:text-3xl md:text-5xl font-extrabold drop-shadow-lg pl-2 md:pl-0 mb-4">
                 {title}
             </h1>
 
-            <p className="hidden md:block text-lg md:text-xl py-4 w-full md:w-1/2 leading-relaxed opacity-90 drop-shadow-md">
+            <p className="hidden sm:block text-base md:text-xl py-4 w-full md:w-1/2 leading-relaxed opacity-90 drop-shadow-md">
                 {overview}
             </p>
 
-            <div className="flex mt-6">
-                <button className="flex items-center justify-center bg-white text-lg md:text-xl rounded-full py-2 px-5 md:px-8 text-black font-semibold hover:bg-opacity-90 transition duration-300 ease-in-out shadow-md mr-4">
+            <div className="flex space-x-4">
+                <button className="flex items-center justify-center bg-white text-sm sm:text-base md:text-xl rounded-full py-2 px-4 sm:px-6 md:px-8 text-black font-semibold hover:bg-opacity-90 transition duration-300 ease-in-out shadow-md">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
-                        className="w-6 h-6 mr-2"
+                        className="w-5 h-5 sm:w-6 sm:h-6 mr-2"
                     >
                         <path
                             fillRule="evenodd"
@@ -28,14 +28,14 @@ const VideoTitle = ({ title, overview }) => {
                     Play
                 </button>
 
-                <button className="hidden md:flex items-center justify-center bg-gray-700 text-lg md:text-xl font-semibold rounded-full py-2 px-8 text-white hover:bg-gray-600 transition duration-300 ease-in-out shadow-md border border-white">
+                <button className="hidden md:flex items-center justify-center bg-gray-700 text-sm sm:text-base md:text-xl font-semibold rounded-full py-2 px-6 sm:px-8 text-white hover:bg-gray-600 transition duration-300 ease-in-out shadow-md border border-white">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-6 h-6 mr-2"
+                        className="w-5 h-5 sm:w-6 sm:h-6 mr-2"
                     >
                         <path
                             strokeLinecap="round"
@@ -47,7 +47,6 @@ const VideoTitle = ({ title, overview }) => {
                 </button>
             </div>
         </div>
-
     )
 }
 

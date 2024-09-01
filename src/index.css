@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--secondary) var(--primary);
 
-} */
+@layer utilities {
+    .scrollbar-thumb-black {
+        --scrollbar-thumb: #282828 !important
+    }
+}
